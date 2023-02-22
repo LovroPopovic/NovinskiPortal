@@ -1,0 +1,19 @@
+{% extends 'main/base.html' %}
+{% block content %}
+    <h2>Article Detail</h2><br><br><br>
+    <h3>
+        Title: {{ article.title }}<br></h3>
+       <p> {{ article.content }}<br><br></p> 
+    
+    <button onclick="document.getElementById('edit-form').style.display='block'">Edit</button>
+
+    <div id="edit-form" style="display: none">
+        <form method="POST" action="{% url 'article_detail' article.pk %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <br>
+            <button type="submit" name="update">Update</button>
+            <button type="submit" name="delete" onclick="return confirm('Are you sure you want to delete this article?')">Delete</button>
+        </form>
+    </div>
+{% endblock %}

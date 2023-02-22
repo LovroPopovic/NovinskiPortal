@@ -1,0 +1,21 @@
+{% extends 'main/base.html' %}
+{% block content %}
+    <h2>Articles</h2>
+    <form method="GET" action="{% url 'article_list' %}">
+        <label for="search">Search:</label>
+        <input type="text" name="search" id="search" value="{{ request.GET.search }}">
+        <button type="submit">Submit</button>
+    </form>
+    <ul>
+        {% for article in object_list %}
+            <li>
+                <a href="{% url 'article_detail' article.pk %}">
+                    Title: {{ article.title }}
+                </a><br>
+                Content: {{ article.content }}<br><br>
+            </li>
+        {% empty %}
+            <li>No articles found</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
