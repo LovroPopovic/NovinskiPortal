@@ -1,1 +1,1 @@
-# PortalNovinski
+# Novinski Portal Slobnodnog Tiska
